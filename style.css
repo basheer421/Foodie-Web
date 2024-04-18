@@ -1,0 +1,169 @@
+* {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	margin: 0;
+}
+
+body {
+	background-image: url(bg.jpg);
+	background-size: cover;
+	height: 100vh;
+}
+
+ .container {
+	opacity: 0.9;
+	border-style: solid;
+	padding: 4em;
+	text-align: center;
+	align-content: center;
+	justify-content: center;
+	border: 2px;
+	border-radius: 4%;
+	background-color: rgb(255, 255, 255);
+	width: fit-content; 
+	height: fit-content;
+	margin-top: 2em;
+} 
+.almost-done {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.navbar {
+	overflow: hidden;
+	background-color: rgb(117, 115, 115);
+
+}
+
+.navbar a {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+
+}
+
+.navbar a:hover {
+	background-color: #dddddd;
+	color: black;
+}
+
+.navbar .logout {
+	float: right;
+}
+
+.wrongPassword {
+	color: red;
+}
+
+#name {
+	margin-bottom: 7px;
+}
+
+.button-28 {
+	appearance: none;
+	background-color: transparent;
+	border: 2px solid #1A1A1A;
+	border-radius: 15px;
+	box-sizing: border-box;
+	color: #3b3b3b;
+	cursor: pointer;
+	display: inline-block;
+	font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 16px;
+	font-weight: 600;
+	line-height: normal;
+	margin: 0;
+	min-height: 60px;
+	min-width: 0;
+	outline: none;
+	padding: 16px 24px;
+	text-align: center;
+	text-decoration: none;
+	transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+	user-select: none;
+	-webkit-user-select: none;
+	touch-action: manipulation;
+	width: 65%;
+	will-change: transform;
+}
+
+.button-28:disabled {
+	pointer-events: none;
+}
+
+.button-28:hover {
+	color: #fff;
+	background-color: #006400;
+	box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+	transform: translateY(-2px);
+}
+
+.button-28:active {
+	box-shadow: none;
+	transform: translateY(0);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="number"] {
+	padding: 10px;
+	font-size: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	width: 60%;
+	background-color: #ffffff;
+}
+.food-items-button {
+	background-color: #006400; /* Green button color */
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 16px;
+  }
+
+  .food-items-button:hover {
+	background-color: #004d00; /* Darker green on hover */
+  }
+
+  .navbar {
+	overflow: hidden;
+	background-color: #006400; /* Green color for navbar */
+	text-align: center; /* Center align navbar items */
+	padding: 10px 0; /* Add padding to navbar */
+  }
+
+  .navbar a {
+	display: inline-block; /* Display navbar items inline */
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+  }
+
+  .navbar a:hover {
+	background-color: #004d00; /* Darker green on hover */
+  }
+
+  .logout-button {
+	background-color: #004d00; /* Red button color */  
+	color: #fff;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 16px;
+	margin-left: 20px; /* Add margin to separate from other buttons */
+  }
+
+  .logout-button:hover {
+	background-color: #004d00; /* Darker green on hover */
+  }

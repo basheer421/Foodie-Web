@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Login Page</title>
+		<link rel="icon" href="C:\xampp\htdocs\Ecoweb\Favicon.png" />
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+
+	<body style="background-image: url('greenBackG.png')">
+		<div class="navbar">
+			<a href="index.html" class="logout-button">HOME</a>
+		</div>
+
+		<div class="almost-done">
+			<form method="post" class="container">
+				<img src="FOODIE.png" alt="Logo" width="200" height="110" />
+
+				<input
+					type="text"
+					name="Staff ID"
+					placeholder="Staff ID"
+					id="Staff ID"
+				/>
+				<br /><br />
+
+				<input
+					type="password"
+					name="password"
+					placeholder="Password"
+					id="password"
+				/>
+				<br /><br />
+
+				<button class="button-28" type="submit">LOGIN</button>
+
+				<h3 style="color: red; margin-top: 1em">
+					<?= (isset($LOGIN_FAIL) && $LOGIN_FAIL === true) ? 'Wrong password' : ''; ?>
+				</h3>
+			</form>
+		</div>
+	</body>
+</html>

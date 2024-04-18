@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Waste Management System</title>
+    <link rel="icon" href="./Favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu {
+            background-color: #006400;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 18px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .menu a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffcd00;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu a:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+
+        .header {
+            background-color: #006400;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            background-image: url('header-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .features {
+            text-align: center;
+            padding: 50px 0;
+           
+        }
+
+        .feature-section {
+            text-align: left;
+            padding: 30px;
+            background-color: #8bc34a; /* Light green background */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            color: white; /* Text color */
+        }
+
+        .feature-section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease;
+            z-index: -1;
+        }
+
+        .feature-section:hover::before {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .feature-icon {
+            font-size: 36px;
+            color: white; /* Icon color */
+            margin-bottom: 10px;
+        }
+
+        .feature-title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: rgb(255, 255, 255); /* Title color */
+        }
+
+        .feature-description {
+            font-size: 18px;
+            color: rgb(255, 255, 255); /* Description color */
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #f0f0f0;
+            margin-top: 5%;
+        }
+
+        .contact-section h2 {
+            font-size: 36px;
+            color: #047c32;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .contact-email {
+            font-weight: bold;
+            color: #047c32;
+        }
+
+        .eco-text {
+            text-align: center;
+            padding: 50px 0;
+            background-color: #006400;
+            color: white;
+        }
+
+        .eco-image {
+            width: 300px;
+            height: auto;
+        }
+
+        .login-button {
+            background-color: #047c32;
+            color: white;
+            font-size: 20px;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-button:hover {
+            background-color: #045029;
+        }
+
+        /* Additional CSS for hover effects */
+        .menu a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #ffcd00;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .menu a:hover::before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+
+        /* CSS for app store icons */
+        .store-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .store-icons img {
+            width: 300px;
+            height: auto;
+            border-radius: 20px;
+            margin: 0 10px;
+            transition: transform 0.3s;
+        }
+
+        .store-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .foodie {
+            width: 500px;
+            height: auto;
+            margin-top: 20%;
+            justify-content: center;
+        }
+
+        .hhh {
+            width: 1000px;
+            height: auto;
+        }
+
+        /* Additional CSS for animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .fadeIn {
+            animation-name: fadeIn;
+            animation-duration: 1.5s;
+        }
+
+        /* Additional CSS for icons */
+        .fab {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        pre{
+            font-weight: bold;
+    text-align: center;
+    font-size: 150%;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Menu -->
+<div class="menu">
+    <a href="#home" class="login-button">Home</a>
+    <a href="#features" class="login-button">Features</a>
+    <a href="login.html" class="login-button">Staff Login</a>
+    <a href="#contact" class="login-button">Contact Us</a>
+</div>
+
+<!-- Header Section -->
+<div class="header" id="home">
+    <img src="FOODIE.png" alt="Foodie Icon" class="eco-image">
+    <h1>Welcome to Our Household Food Waste Management Website</h1>
+    <h2>Saving food, saving the planet!</h2>
+     <img src="Pla.jpeg" alt="PLa Icon" class="hhh">
+</div>
+
+<!-- App Store Icons -->
+<div class="store-icons">
+    <img src="AppleStore.JPG" alt="Apple Store icon">
+    <img src="PlayStore.JPG" alt="Play Store icon">
+</div>
+
+<!-- Mission Statement -->
+<pre >END HUNGER, 
+    ACHIEVE FOOD SECURITY AND IMPROVED NUTRITION, 
+    AND PROMOTE SUSTAINABLE AGRICULTURE</pre>
+
+<!-- Features Section -->
+<div class="features" id="features">
+    <div class="feature-section fadeIn">
+        <i class="fas fa-leaf feature-icon"></i>
+        <h2 class="feature-title">Expiry Tracking</h2>
+        <p class="feature-description">Foodie enables users to monitor the expiration dates of their food items, reducing waste and ensuring freshness.</p>
+    </div>
+
+    <div class="feature-section fadeIn">
+        <i class="fas fa-barcode feature-icon"></i>
+        <h2 class="feature-title">Barcode Scanning</h2>
+        <p class="feature-description">Foodie allows users to quickly input food items by scanning their barcodes for convenient and accurate inventory management.</p>
+    </div>
+
+    <div class="feature-section fadeIn">
+        <i class="fas fa-calendar-alt feature-icon"></i>
+        <h2 class="feature-title">Expiration Date Scanning</h2>
+        <p class="feature-description">Foodie enables users to effortlessly capture and record the expiration dates of food items for effective inventory management and timely consumption.</p>
+    </div>
+
+    <div class="feature-section fadeIn">
+        <i class="fas fa-map-marker-alt feature-icon"></i>
+        <h2 class="feature-title">Locate Food Banks</h2>
+        <p class="feature-description">Foodie locates nearby food banks, facilitating users in finding assistance or donating surplus food items to support their community.</p>
+    </div>
+
+    <div class="feature-section fadeIn">
+        <i class="fas fa-palette feature-icon"></i>
+        <h2 class="feature-title">Color blindness</h2>
+        <p class="feature-description">Foodie enhances the user experience by providing alternative color schemes or visual cues, ensuring users with color vision deficiencies can effectively navigate and interact with the application.</p>
+    </div>
+
+    <div class="feature-section fadeIn">
+        <i class="fas fa-trophy feature-icon"></i>
+        <h2 class="feature-title">Rewards System</h2>
+        <p class="feature-description">Foodie rewards users with achievements or recognition based on their engagement, contributions, or milestones within the application, fostering motivation and a sense of accomplishment.</p>
+    </div>
+</div>
+</br></br></br>
+
+<!-- Contact Information Section -->
+<div class="contact-section" id="contact">
+    <h2>Contact Information</h2>
+    <p class="contact-info"><i class="fas fa-user"></i> <span class="contact-name">Zaid Hadya</span> - <span class="contact-email">zaid.omar962@gmail.com</span></p>
+    <p class="contact-info"><i class="fas fa-user"></i> <span class="contact-name">Ali Bakr</span> - <span class="contact-email">aliyahyabakr@gmail.com</span></p>
+    <p class="contact-info"><i class="fas fa-user"></i> <span class="contact-name">Basheer Ammar</span> - <span class="contact-email">Basheer.business12@gmail.com</span></p>
+</div>
+
+<!-- Eco Text Section -->
+<div class="eco-text">
+    <p>Join us in making a difference for our planet.</p>
+    <img src="FOODIE.png" alt="Foodie Icon" class="eco-image">
+</div>
+
+</body>
+</html>

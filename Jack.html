@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" href="C:\xampp\htdocs\Ecoweb\Favicon.png">
+  <meta charset="UTF-8">
+  <title>User Profile</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      background-image: url('background-image.jpg'); /* Replace with your background image file name */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: black;
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1em;
+    }
+
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .profile-section {
+      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #333;
+      text-align: center; /* Center the title */
+    }
+
+    .food-items-button {
+      background-color: #006400; /* Green button color */
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .food-items-button:hover {
+      background-color: #004d00; /* Darker green on hover */
+    }
+
+    .navbar {
+      overflow: hidden;
+      background-color: #006400; /* Green color for navbar */
+      text-align: center; /* Center align navbar items */
+      padding: 10px 0; /* Add padding to navbar */
+    }
+
+    .navbar a {
+      display: inline-block; /* Display navbar items inline */
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    .navbar a:hover {
+      background-color: #004d00; /* Darker green on hover */
+    }
+
+    .logout-button {
+      background-color: #004d00; /* Red button color */  
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+      margin-left: 20px; /* Add margin to separate from other buttons */
+    }
+
+    .logout-button:hover {
+      background-color: #004d00; /* Darker green on hover */
+    }
+
+    /* Table styles */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 16px; /* Increased font size */
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #006400;
+      color: white;
+      text-align: center;
+      font-size: 150%;
+    }
+
+    td {
+      background-color: #f2f2f2;
+      text-align: center;
+      font-size: 140%;
+    }
+
+    /* Styles for date and time display */
+    #datetime {
+      font-size: 20px;
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(60, 168, 60, 0.8); /* Slightly transparent background */
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Improved box shadow */
+      transition: background-color 0.3s ease; /* Smooth transition effect */
+      border-radius: 8px;
+    }
+
+    #datetime:hover {
+      background-color: rgba(10, 102, 1, 0.8); /* Background color on hover */
+    }
+
+    /* Text field for donation quantity */
+    .donation-quantity-field {
+      width: 60px;
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    /* Button to finish */
+    .finish-button {
+      text-align: center;
+      display: block;
+      margin: 20px auto; /* Center the button horizontally */
+      background-color: #006400; /* Green button color */
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 16px;
+      margin-top: 20px; /* Add margin to separate from the table */
+    }
+
+    .finish-button:hover {
+      background-color: #004d00; /* Darker green on hover */
+    }
+  </style>
+</head>
+<body>
+  
+<div class="navbar">
+    <a href="index.html" class="logout-button">HOME</a>
+    <a href="login.html" class="logout-button">LOGOUT</a>
+</div>
+
+<div id="datetime"></div> <!-- Time and Date -->
+
+<script> 
+    function updateDateTime() {
+      var dateTimeElement = document.getElementById("datetime");
+      var now = new Date();
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', timeZoneName: 'short' };
+      var formattedDateTime = now.toLocaleDateString('en-US', options);
+      dateTimeElement.textContent = formattedDateTime;
+    }
+
+    // Update date and time every second
+    setInterval(updateDateTime, 1000);
+
+    // Initial call to display the date and time immediately
+    updateDateTime(); 
+</script>
+
+<div class="container">
+    <div class="profile-section">
+        <h1>Donator Food Items</h1> <!-- Changed title to "Food Items" and centered it -->
+        <!-- Table for displaying food items -->
+        <table>
+          <thead>
+            <tr>
+              <th>Item Name</th>
+              <th>Category</th>
+              <th>Quantity</th>
+              <th>Expiry Date</th>
+              <th>Weight</th> <!-- Added new column -->
+              <th>Donation Quantity</th> <!-- Added new column -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apple</td>
+              <td>Fruits</td>
+              <td>15</td>
+              <td>2024-04-10</td>
+              <td>1.8kg</td>
+              <td>
+                <form method="post">
+                  <input type="number" name="donation_quantity" class="donation-quantity-field" value="<?php echo $_POST['donation_quantity']; ?>">
+                  
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>Banana</td>
+              <td>Fruits</td>
+              <td>10</td>
+              <td>2024-04-22</td>
+              <td>2.5kg</td>
+              <td>
+                <form method="post">
+                  <input type="number" name="donation_quantity" class="donation-quantity-field" value="<?php echo $_POST['donation_quantity']; ?>">
+                
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td> Watermelon</td>
+              <td>Fruits</td>
+              <td>5</td>
+              <td>2024-04-15</td>
+              <td>12kg</td>
+              <td>
+                <form method="post">
+                  <input type="number" name="donation_quantity" class="donation-quantity-field" value="<?php echo $_POST['donation_quantity']; ?>">
+                
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>Pineapple</td>
+              <td>Fruits</td>
+              <td>3</td>
+              <td>2024-04-23</td>
+              <td>3kg</td>
+              <td>
+                <form method="post">
+                  <input type="number" name="donation_quantity" class="donation-quantity-field" value="<?php echo $_POST['donation_quantity']; ?>">
+               
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>Toast</td>
+              <td>Bread</td>
+              <td>2</td>
+              <td>2024-04-11</td>
+              <td>1kg</td>
+              <td>
+                <form method="post">
+                  <input type="number" name="donation_quantity" class="donation-quantity-field" value="<?php echo $_POST['donation_quantity']; ?>">
+                 
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>Arabian Bread</td>
+              <td>Bread</td>
+              <td>2</td>
+              <td>2024-04-11</td>
+              <td>1kg</td>
+              <td>
+                <form method="post">
+                  <input type="number" name="donation_quantity" class="donation-quantity-field" value="<?php echo $_POST['donation_quantity']; ?>">
+               
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <td>baguette </td>
+              <td>Bread</td>
+              <td>8</td>
+              <td>2024-04-20</td>
+              <td>0.6kg</td>
+              <td>
+                <form method="post">
+                  <input type="number" name="donation_quantity" class="donation-quantity-field" value="<?php echo $_POST['donation_quantity']; ?>">
+               
+                </form>
+              </td>
+            </tr>
+            
+            <!-- Add more rows as needed -->
+          </tbody>
+        </table>
+        <button class="finish-button">Finish</button> <!-- Button to finish -->
+    </div>
+</div>
+
+
+</body>
+</html>
+
+
+
