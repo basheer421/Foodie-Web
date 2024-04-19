@@ -11,6 +11,7 @@
 	<body style="background-image: url('greenBackG.png')">
 		<div class="navbar">
 			<a href="index.html" class="logout-button">HOME</a>
+			<a href="login.html" class="logout-button">LOGOUT</a>
 		</div>
 
 		<div class="almost-done">
@@ -19,25 +20,16 @@
 
 				<input
 					type="text"
-					name="Staff ID"
-					placeholder="Staff ID"
-					id="Staff ID"
+					name="Donator Email"
+					placeholder="Donator Email"
+					id="Donator Email"
+					width="30"
 				/>
 				<br /><br />
 
-				<input
-					type="password"
-					name="password"
-					placeholder="Password"
-					id="password"
-				/>
-				<br /><br />
+				<button class="button-28" type="submit">View List</button>
 
-				<button class="button-28" type="submit">LOGIN</button>
-
-				<h3 style="color: red; margin-top: 1em">
-					<?= (isset($LOGIN_FAIL) && $LOGIN_FAIL === true) ? 'Wrong password' : ''; ?>
-				</h3>
+				<h3 style="color: red; margin-top: 1em"></h3>
 			</form>
 		</div>
 	</body>
