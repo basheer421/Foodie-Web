@@ -5,8 +5,6 @@ async function logout() {
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: localStorage.getItem("Authorization"),
-				mode: 'no-cors',
-
 			},
 		});
 		localStorage.removeItem("Authorization");
