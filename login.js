@@ -1,4 +1,3 @@
-
 async function login(email, password) {
 	try {
 		const data = await fetch("http://localhost:80/api/login/", {
@@ -16,30 +15,11 @@ async function login(email, password) {
 		alert(response.error);
 		return false;
 	}
-	localStorage.setItem('Authorization', response.result.access_token);
+	localStorage.setItem('Authorization', response.result);
 	return true;
 	} catch (error) {
 		alert("Error logging in");
 		return false;
-	}
-}
-
-async function logout() {
-	try {
-		const data = await fetch("http://localhost:80/api/logout", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application",
-				Authorization: localStorage.getItem("Authorization"),
-			},
-		});
-		const response = await data.json();
-		if (response.error) {
-			alert(response.error);
-		}
-		localStorage.removeItem("Authorization");
-	} catch (error) {
-		alert("Error logging out");
 	}
 }
 
@@ -51,7 +31,14 @@ loginButton.addEventListener("click", async () => {
     const success = await login(email, password);
     if (success) {
         window.location.href = "reqEmail.html";
-    } else {
-		alert("Invalid email or password");
-	}
+    }
 });
+
+const formContainer = document.getElementById("formContainer");
+formContainer.addEventListener("submit", (event) => {
+	event.preventDefault();
+});
+
+if (localStorage.getItem('Authorization') !== null) {
+	window.location.href = "reqEmail.html";
+}

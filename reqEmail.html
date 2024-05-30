@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 
 <html lang="en">
-	<head>
-		<title>Login Page</title>
-		<link rel="icon" href="./Favicon.png" />
-		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="style.css" />
-	</head>
-	<!-- <script src="reqEmail.js" type="module" defer></script> -->
+  <head>
+    <title>Login Page</title>
+    <link rel="icon" href="./Favicon.png" />
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
 
-	<body style="background-image: url('greenBackG.png')">
-		<div class="navbar">
-			<a href="index.html" class="logout-button">HOME</a>
-			<a href="login.html" class="logout-button">LOGOUT</a>
-		</div>
+  <body style="background-image: url('greenBackG.png')">
+    <script src="reqEmail.js" type="module" defer></script>
 
-		<div class="almost-done">
-			<div class="container">
-				<img src="FOODIE.png" alt="Logo" width="200" height="110" />
-				<input
-					type="text"
-					name="Donator Email"
-					placeholder="Donator Email"
-					id="Donator Email"
-					width="30"
-				/>
-				<br /><br />
+    <div class="navbar">
+      <a href="index.html" class="logout-button">HOME</a>
+      <a class="logout-button" id="logoutButton">LOGOUT</a>
+    </div>
 
-				<button class="button-28" type="submit">View List</button>
+    <div class="almost-done">
+      <div class="container">
+        <img src="FOODIE.png" alt="Logo" width="200" height="110" />
+        <input
+          type="text"
+          name="Donator Email"
+          placeholder="Donator Email"
+          id="Donator Email"
+          width="30"
+        />
+        <br /><br />
 
-				<h3 style="color: red; margin-top: 1em"></h3>
-			</div>
-		</div>
-	</body>
+        <button class="button-28" type="submit">View List</button>
+
+        <h3 style="color: red; margin-top: 1em"></h3>
+      </div>
+    </div>
+  </body>
 </html>
