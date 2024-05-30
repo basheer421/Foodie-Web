@@ -1,10 +1,12 @@
 async function logout() {
 	try {
-		const data = await fetch("http://localhost:80/api/logout", {
+		const data = await fetch("http://vk4c4sk.68.183.80.161.sslip.io/api/logout", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: localStorage.getItem("Authorization"),
+				mode: 'no-cors',
+
 			},
 		});
 		localStorage.removeItem("Authorization");
