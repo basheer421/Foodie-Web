@@ -3,29 +3,30 @@ async function logout() {
 		const data = await fetch("http://localhost:80/api/logout", {
 			method: "POST",
 			headers: {
-				"Content-Type": "application",
+				"Content-Type": "application/json",
 				Authorization: localStorage.getItem("Authorization"),
 			},
 		});
+		localStorage.removeItem("Authorization");
 		const response = await data.json();
 		if (response.error) {
 			alert(response.error);
 		}
-		localStorage.removeItem("Authorization");
 	} catch (error) {
 		alert("Error logging out");
 	}
 }
 
-const formContainer = document.getElementById("formContainer");
-formContainer.addEventListener("submit", (event) => {
-	event.preventDefault();
-});
 
 const logoutButton = document.getElementById("logoutButton");
 logoutButton.addEventListener("click", async () => {
     await logout();
     window.location.href = "login.html";
+});
+
+const formContainer = document.getElementById("formContainer");
+formContainer.addEventListener("submit", (event) => {
+	event.preventDefault();
 });
 
 const viewButton = document.getElementById("viewButton");
