@@ -36,70 +36,70 @@ updateDateTime();
  * 
  */
 
-const items = [
-	{
-		name: "Apple",
-		category: "Fruits",
-		quantity: 15,
-		expiryDate: "2024-04-10",
-		weight: "1.8kg",
-		donationQuantity: 0,
-	},
-	{
-		name: "Banana",
-		category: "Fruits",
-		quantity: 10,
-		expiryDate: "2024-04-22",
-		weight: "2.5kg",
-		donationQuantity: 0,
-	},
-	{
-		name: "Watermelon",
-		category: "Fruits",
-		quantity: 5,
-		expiryDate: "2024-04-15",
-		weight: "12kg",
-		donationQuantity: 0,
-	},
-	{
-		name: "Pineapple",
-		category: "Fruits",
-		quantity: 3,
-		expiryDate: "2024-04-23",
-		weight: "3kg",
-		donationQuantity: 0,
-	},
-	{
-		name: "Toast",
-		category: "Bread",
-		quantity: 2,
-		expiryDate: "2024-04-11",
-		weight: "1kg",
-		donationQuantity: 0,
-	},
-	{
-		name: "Arabian Bread",
-		category: "Bread",
-		quantity: 2,
-		expiryDate: "2024-04-11",
-		weight: "1kg",
-		donationQuantity: 0,
-	},
-	{
-		name: "baguette",
-		category: "Bread",
-		quantity: 8,
-		expiryDate: "2024-04-20",
-		weight: "0.6kg",
-		donationQuantity: 0,
-	},
-];
+// const items = [
+// 	{
+// 		name: "Apple",
+// 		category: "Fruits",
+// 		quantity: 15,
+// 		expiry_date: "2024-04-10",
+// 		weight: "1.8kg",
+// 		quantity: 0,
+// 	},
+// 	{
+// 		name: "Banana",
+// 		category: "Fruits",
+// 		quantity: 10,
+// 		expiry_date: "2024-04-22",
+// 		weight: "2.5kg",
+// 		quantity: 0,
+// 	},
+// 	{
+// 		name: "Watermelon",
+// 		category: "Fruits",
+// 		quantity: 5,
+// 		expiry_date: "2024-04-15",
+// 		weight: "12kg",
+// 		quantity: 0,
+// 	},
+// 	{
+// 		name: "Pineapple",
+// 		category: "Fruits",
+// 		quantity: 3,
+// 		expiry_date: "2024-04-23",
+// 		weight: "3kg",
+// 		quantity: 0,
+// 	},
+// 	{
+// 		name: "Toast",
+// 		category: "Bread",
+// 		quantity: 2,
+// 		expiry_date: "2024-04-11",
+// 		weight: "1kg",
+// 		quantity: 0,
+// 	},
+// 	{
+// 		name: "Arabian Bread",
+// 		category: "Bread",
+// 		quantity: 2,
+// 		expiry_date: "2024-04-11",
+// 		weight: "1kg",
+// 		quantity: 0,
+// 	},
+// 	{
+// 		name: "baguette",
+// 		category: "Bread",
+// 		quantity: 8,
+// 		expiry_date: "2024-04-20",
+// 		weight: "0.6kg",
+// 		quantity: 0,
+// 	},
+// ];
 
-function updateDonationQuantity(index, value) {
-	items[index].donationQuantity = value;
+function updatequantity(index, value) {
+	items[index].quantity = value;
 }
 
-function displayItems() {
+function displayItems(items) {
 	const tableBody = document.getElementById("foodListBody");
 	items.forEach((item, index) => {
 		const row = tableBody.insertRow();
@@ -107,13 +107,34 @@ function displayItems() {
             <td>${item.name}</td>
             <td>${item.category}</td>
             <td>${item.quantity}</td>
-            <td>${item.expiryDate}</td>
+            <td>${item.expiry_date}</td>
             <td>${item.weight}</td>
             <td>
-                <input type="number" value="${item.donationQuantity}" min="0" max="${item.quantity}" onchange="updateDonationQuantity(${index}, this.value)">
+                <input type="number" value="${item.quantity}" min="0" max="${item.quantity}" onchange="updatequantity(${index}, this.value)">
             </td>
         `;
 	});
 }
 
-displayItems();
+// displayItems(items);
+
+window.addEventListener("load", async () => {
+	const urlParams = new URLSearchParams(window.location.search);
+	const email = urlParams.get("email");
+	const response = await fetch(`http://localhost:80/api/user_items/`, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application",
+			Authorization: localStorage.getItem("Authorization"),
+		},
+		body: JSON.stringify({ email }),
+	});
+	const res = await response.json();
+	if (res.error) {
+		alert(res.error);
+		return;
+	}
+	const data = res.result;
+	const items = data.items;
+	displayItems(items);
+});

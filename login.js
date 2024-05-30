@@ -29,9 +29,9 @@ loginButton.addEventListener("click", async () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const success = await login(email, password);
-    if (success) {
-        window.location.href = "reqEmail.html";
-    }
+	if (success) {
+		window.location.href = "reqEmail.html";
+	}
 });
 
 const formContainer = document.getElementById("formContainer");
