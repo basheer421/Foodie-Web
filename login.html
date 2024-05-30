@@ -9,19 +9,22 @@
 	</head>
 
 	<body style="background-image: url('greenBackG.png')">
+		<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+		<script src="./supabase.js" defer></script>
+		<script src="./login.js" defer></script>
 		<div class="navbar">
 			<a href="index.html" class="logout-button">HOME</a>
 		</div>
 
 		<div class="almost-done">
-			<form method="post" class="container">
+			<div class="container" >
 				<img src="FOODIE.png" alt="Logo" width="200" height="110" />
 
 				<input
 					type="text"
-					name="Staff ID"
-					placeholder="Staff ID"
-					id="Staff ID"
+					name="email"
+					placeholder="Email"
+					id="email"
 				/>
 				<br /><br />
 
@@ -33,12 +36,12 @@
 				/>
 				<br /><br />
 
-				<button class="button-28" type="submit">LOGIN</button>
+				<button class="button-28" id="loginButton" type="submit" >LOGIN</button>
 
 				<h3 style="color: red; margin-top: 1em">
 					<?= (isset($LOGIN_FAIL) && $LOGIN_FAIL === true) ? 'Wrong password' : ''; ?>
 				</h3>
-			</form>
+			</div>
 		</div>
 	</body>
 </html>

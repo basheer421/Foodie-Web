@@ -4,179 +4,13 @@
 		<link rel="icon" href="./Favicon.png" />
 		<meta charset="UTF-8" />
 		<title>User Profile</title>
-		<style>
-			body {
-				font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-				background-color: #f4f4f4;
-				margin: 0;
-				padding: 0;
-				background-image: url("background-image.jpg"); /* Replace with your background image file name */
-				background-size: cover;
-				background-position: center;
-				background-repeat: no-repeat;
-				color: black;
-			}
-
-			header {
-				background-color: #333;
-				color: #fff;
-				text-align: center;
-				padding: 1em;
-			}
-
-			.container {
-				width: 80%;
-				margin: 0 auto;
-				overflow: hidden;
-			}
-
-			.profile-section {
-				background-color: rgba(
-					255,
-					255,
-					255,
-					0.8
-				); /* Semi-transparent white background */
-				padding: 20px;
-				margin-top: 20px;
-				border-radius: 8px;
-				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-			}
-
-			h1 {
-				color: #333;
-				text-align: center; /* Center the title */
-			}
-
-			.food-items-button {
-				background-color: #006400; /* Green button color */
-				color: #fff;
-				border: none;
-				padding: 10px 20px;
-				border-radius: 5px;
-				cursor: pointer;
-				text-decoration: none;
-				font-size: 16px;
-			}
-
-			.food-items-button:hover {
-				background-color: #004d00; /* Darker green on hover */
-			}
-
-			.navbar {
-				overflow: hidden;
-				background-color: #006400; /* Green color for navbar */
-				text-align: center; /* Center align navbar items */
-				padding: 10px 0; /* Add padding to navbar */
-			}
-
-			.navbar a {
-				display: inline-block; /* Display navbar items inline */
-				color: white;
-				text-align: center;
-				padding: 14px 16px;
-				text-decoration: none;
-			}
-
-			.navbar a:hover {
-				background-color: #004d00; /* Darker green on hover */
-			}
-
-			.logout-button {
-				background-color: #004d00; /* Red button color */
-				color: #fff;
-				border: none;
-				padding: 10px 20px;
-				border-radius: 5px;
-				cursor: pointer;
-				text-decoration: none;
-				font-size: 16px;
-				margin-left: 20px; /* Add margin to separate from other buttons */
-			}
-
-			.logout-button:hover {
-				background-color: #004d00; /* Darker green on hover */
-			}
-
-			/* Table styles */
-			table {
-				width: 100%;
-				border-collapse: collapse;
-				margin-top: 20px;
-				font-size: 16px; /* Increased font size */
-				border-radius: 8px;
-				overflow: hidden;
-			}
-
-			th,
-			td {
-				border: 1px solid #ddd;
-				padding: 10px;
-				text-align: center;
-			}
-
-			th {
-				background-color: #006400;
-				color: white;
-				text-align: center;
-				font-size: 150%;
-			}
-
-			td {
-				background-color: #f2f2f2;
-				text-align: center;
-				font-size: 140%;
-			}
-
-			/* Styles for date and time display */
-			#datetime {
-				font-size: 20px;
-				text-align: center;
-				padding: 20px;
-				background-color: rgba(
-					60,
-					168,
-					60,
-					0.8
-				); /* Slightly transparent background */
-				box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); /* Improved box shadow */
-				transition: background-color 0.3s ease; /* Smooth transition effect */
-				border-radius: 8px;
-			}
-
-			#datetime:hover {
-				background-color: rgba(10, 102, 1, 0.8); /* Background color on hover */
-			}
-
-			/* Text field for donation quantity */
-			.donation-quantity-field {
-				width: 60px;
-				padding: 5px;
-				font-size: 14px;
-			}
-
-			/* Button to finish */
-			.finish-button {
-				text-align: center;
-				display: block;
-				margin: 20px auto; /* Center the button horizontally */
-				background-color: #006400; /* Green button color */
-				color: #fff;
-				border: none;
-				padding: 10px 20px;
-				border-radius: 5px;
-				cursor: pointer;
-				text-decoration: none;
-				font-size: 16px;
-				margin-top: 20px; /* Add margin to separate from the table */
-			}
-
-			.finish-button:hover {
-				background-color: #004d00; /* Darker green on hover */
-			}
-		</style>
+		<link rel="stylesheet" href="foodList.css">
+		<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@latest"></script>
 	</head>
 	<body>
+		<script src="./supabase.js" type="module" defer></script>
+		<script src="./foodList.js" type="module" defer></script>
+
 		<div class="navbar">
 			<a href="index.html" class="logout-button">HOME</a>
 			<a href="login.html" class="logout-button">LOGOUT</a>
@@ -184,8 +18,6 @@
 
 		<div id="datetime"></div>
 		<!-- Time and Date -->
-
-		<script src="./foodList.js" defer></script>
 
 		<div class="container">
 			<div class="profile-section">

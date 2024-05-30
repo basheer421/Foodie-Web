@@ -1,3 +1,6 @@
+
+import supabase from "./supabase";
+
 function updateDateTime() {
 	var dateTimeElement = document.getElementById("datetime");
 	var now = new Date();
@@ -20,6 +23,20 @@ setInterval(updateDateTime, 1000);
 
 // Initial call to display the date and time immediately
 updateDateTime();
+
+/**
+ * Login as bank staff
+ * Type user email
+ * 
+ * fetch data from the database related to the user email
+ * display the user data on the table
+ * user click Finish button
+ * update user data in the database
+ * 	- update user score (using zaid algo)
+ * 	- update user items (remove donated items)
+ * - refresh the page 
+ * 
+ */
 
 const items = [
 	{
