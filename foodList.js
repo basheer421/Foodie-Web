@@ -1,6 +1,4 @@
 
-import supabase from "./supabase";
-
 function updateDateTime() {
 	var dateTimeElement = document.getElementById("datetime");
 	var now = new Date();

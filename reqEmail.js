@@ -17,8 +17,21 @@ async function logout() {
 	}
 }
 
+const formContainer = document.getElementById("formContainer");
+formContainer.addEventListener("submit", (event) => {
+	event.preventDefault();
+});
+
 const logoutButton = document.getElementById("logoutButton");
 logoutButton.addEventListener("click", async () => {
     await logout();
     window.location.href = "login.html";
+});
+
+const viewButton = document.getElementById("viewButton");
+viewButton.addEventListener("click", async () => {
+	const email = document.getElementById("Donator Email").value;
+	const params = new URLSearchParams({ email });
+	console.log(`foodList.html?${params.toString()}`);
+	window.location.href = `foodList.html?${params.toString()}`;
 });

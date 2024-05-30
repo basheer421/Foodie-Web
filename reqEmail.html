@@ -9,7 +9,7 @@
   </head>
 
   <body style="background-image: url('greenBackG.png')">
-    <script src="reqEmail.js" type="module" defer></script>
+    <script src="reqEmail.js" defer></script>
 
     <div class="navbar">
       <a href="index.html" class="logout-button">HOME</a>
@@ -17,7 +17,7 @@
     </div>
 
     <div class="almost-done">
-      <div class="container">
+      <form class="container" id="formContainer">
         <img src="FOODIE.png" alt="Logo" width="200" height="110" />
         <input
           type="text"
@@ -28,10 +28,10 @@
         />
         <br /><br />
 
-        <button class="button-28" type="submit">View List</button>
+        <button class="button-28" type="submit" id="viewButton">View List</button>
 
         <h3 style="color: red; margin-top: 1em"></h3>
-      </div>
+      </form>
     </div>
   </body>
 </html>
