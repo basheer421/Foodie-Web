@@ -1,6 +1,6 @@
 async function login(email, password) {
 	try {
-		const data = await fetch("http://vk4c4sk.68.183.80.161.sslip.io:8080/api/login/", {
+		const data = await fetch("http://vk4c4sk.68.183.80.161.sslip.io:80/api/login/", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
