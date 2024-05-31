@@ -119,7 +119,7 @@ function displayItems(items) {
 window.addEventListener("load", async () => {
 	const urlParams = new URLSearchParams(window.location.search);
 	const email = urlParams.get("email");
-	const response = await fetch(`http://vk4c4sk.68.183.80.161.sslip.io/api/user_items/`, {
+	const response = await fetch(`http://vk4c4sk.68.183.80.161.sslip.io:8000/api/user_items/`, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -139,7 +139,7 @@ window.addEventListener("load", async () => {
 
 async function logout() {
 	try {
-		const data = await fetch("http://vk4c4sk.68.183.80.161.sslip.io/api/logout", {
+		const data = await fetch("http://vk4c4sk.68.183.80.161.sslip.io:8000/api/logout", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
