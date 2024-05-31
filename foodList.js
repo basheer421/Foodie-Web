@@ -125,7 +125,6 @@ finishButton.addEventListener("click", async () => {
 		headers: {
 			"Content-Type": "application/json",
 			Authorization: localStorage.getItem("Authorization"),
-			mode: "cors",
 		},
 		body: JSON.stringify(payload),
 	});
