@@ -81,7 +81,7 @@ window.addEventListener("load", async () => {
 		items[i].donate_quantity = 0;
 	}
 	const loadingHeader = document.getElementById("loading");
-	loadingHeader.style.display = hidden;
+	loadingHeader.style.display = 'none';
 	displayItems();
 });
 
