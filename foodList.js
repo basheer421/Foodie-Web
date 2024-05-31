@@ -36,70 +36,14 @@ updateDateTime();
  * 
  */
 
-// const items = [
-// 	{
-// 		name: "Apple",
-// 		category: "Fruits",
-// 		quantity: 15,
-// 		expiry_date: "2024-04-10",
-// 		weight: "1.8kg",
-// 		quantity: 0,
-// 	},
-// 	{
-// 		name: "Banana",
-// 		category: "Fruits",
-// 		quantity: 10,
-// 		expiry_date: "2024-04-22",
-// 		weight: "2.5kg",
-// 		quantity: 0,
-// 	},
-// 	{
-// 		name: "Watermelon",
-// 		category: "Fruits",
-// 		quantity: 5,
-// 		expiry_date: "2024-04-15",
-// 		weight: "12kg",
-// 		quantity: 0,
-// 	},
-// 	{
-// 		name: "Pineapple",
-// 		category: "Fruits",
-// 		quantity: 3,
-// 		expiry_date: "2024-04-23",
-// 		weight: "3kg",
-// 		quantity: 0,
-// 	},
-// 	{
-// 		name: "Toast",
-// 		category: "Bread",
-// 		quantity: 2,
-// 		expiry_date: "2024-04-11",
-// 		weight: "1kg",
-// 		quantity: 0,
-// 	},
-// 	{
-// 		name: "Arabian Bread",
-// 		category: "Bread",
-// 		quantity: 2,
-// 		expiry_date: "2024-04-11",
-// 		weight: "1kg",
-// 		quantity: 0,
-// 	},
-// 	{
-// 		name: "baguette",
-// 		category: "Bread",
-// 		quantity: 8,
-// 		expiry_date: "2024-04-20",
-// 		weight: "0.6kg",
-// 		quantity: 0,
-// 	},
-// ];
+let items = [];
+
 
 function updatequantity(index, value) {
-	items[index].quantity = value;
+	items[index].donate_quantity = value;
 }
 
-function displayItems(items) {
+function displayItems() {
 	const tableBody = document.getElementById("foodListBody");
 	items.forEach((item, index) => {
 		const row = tableBody.insertRow();
@@ -110,7 +54,7 @@ function displayItems(items) {
             <td>${new Date(item.expiry_date).toDateString()}</td>
             <td>${item.weight}</td>
             <td>
-                <input type="number" value="${item.quantity}" min="0" max="${item.quantity}" onchange="updatequantity(${index}, this.value)">
+                <input type="number" value="0" min="0" max="${item.quantity}" onchange="updatequantity(${index}, this.value)">
             </td>
         `;
 	});
@@ -132,9 +76,13 @@ window.addEventListener("load", async () => {
 		alert(res.error);
 		return;
 	}
-	const data = res.result;
-	console.log(data);
-	displayItems(data);
+	items = res.result;
+	for (let i = 0; i < data.length; i++) {
+		items[i].donate_quantity = 0;
+	}
+	const loadingHeader = document.getElementById("loading");
+	loadingHeader.style.display = "none";
+	displayItems();
 });
 
 async function logout() {
@@ -160,4 +108,27 @@ const logoutButton = document.getElementById("logoutButton");
 logoutButton.addEventListener("click", async () => {
     await logout();
     window.location.href = "login.html";
+});
+
+
+const finishButton = document.getElementById("finishButton");
+finishButton.addEventListener("click", async () => {
+	const urlParams = new URLSearchParams(window.location.search);
+	const email = urlParams.get("email");
+	const itemsToDonate = items.filter((item) => item.quantity > 0);
+	const payload = {
+		email,
+		items: itemsToDonate,
+	};
+	const response = await fetch("http://vk4c4sk.68.183.80.161.sslip.io:80/api/donate_items/", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			Authorization: localStorage.getItem("Authorization"),
+		},
+		body: JSON.stringify(payload),
+	});
+	const res = await response.json();
+	res ? alert("Donation successful") : alert("Donation failed");
+	window.location.reload();
 });
