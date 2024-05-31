@@ -120,11 +120,12 @@ finishButton.addEventListener("click", async () => {
 		email,
 		items: itemsToDonate,
 	};
-	const response = await fetch("http://vk4c4sk.68.183.80.161.sslip.io:80/api/donate_items/", {
+	const response = await fetch("http://vk4c4sk.68.183.80.161.sslip.io/api/donate_items/", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 			Authorization: localStorage.getItem("Authorization"),
+			mode: "cors",
 		},
 		body: JSON.stringify(payload),
 	});
